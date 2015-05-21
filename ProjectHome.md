@@ -1,0 +1,1 @@
+jmetis provides a API to create rich user interface applications on a variety of platforms such as the Web, Swing, or SWT/JFace. jmetis provides various control builder implementations, that use javax.el to bind the model objects to the user interface controls.

@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Java Naming and Directory Interface Extensions
+Bundle-SymbolicName: org.jmetis.kernel.naming
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: jmetis.org
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Require-Bundle: org.jmetis.kernel;bundle-version="1.0.0"
+Export-Package: org.jmetis.kernel.naming

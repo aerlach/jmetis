@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Service Definitions
+Bundle-SymbolicName: org.jmetis.services.core;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: www.jmetis.org
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: org.jmetis.service.core

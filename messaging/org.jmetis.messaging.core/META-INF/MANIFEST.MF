@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Messaging Core
+Bundle-SymbolicName: org.jmetis.messaging.core;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: jmetis.org
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Require-Bundle: org.jmetis.kernel;bundle-version="1.0.0";visibility:=reexport
+Export-Package: org.jmetis.messaging.adapter,
+ org.jmetis.messaging.channel,
+ org.jmetis.messaging.core,
+ org.jmetis.messaging.decorator

@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: JMetis Data Binding Plug-in
+Bundle-SymbolicName: org.jmetis.binding
+Bundle-Version: 1.0.0
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Require-Bundle: org.eclipse.core.databinding;bundle-version="1.1.0";resolution:=optional;visibility:=reexport,
+ org.jmetis.observable;bundle-version="1.0.0",
+ org.jmetis.reflection;bundle-version="1.0.0"
+Export-Package: org.jmetis.binding

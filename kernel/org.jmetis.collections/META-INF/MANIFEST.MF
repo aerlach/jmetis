@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Collections Plug-in
+Bundle-SymbolicName: org.jmetis.collections
+Bundle-Version: 1.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Require-Bundle: org.jmetis.closures;bundle-version="1.0.0",
+ org.jmetis.kernel;bundle-version="1.0.0"
+Export-Package: org.jmetis.collections.decorator,
+ org.jmetis.collections.enumeration,
+ org.jmetis.collections.iterable,
+ org.jmetis.collections.list,
+ org.jmetis.collections.map,
+ org.jmetis.collections.observable
+

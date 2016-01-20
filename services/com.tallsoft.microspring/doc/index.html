@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>MicroSpring, a Sping Framework IOC container</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+<table width="100%" border="0">
+  <tr> 
+    <td width="20%" height="289"> 
+      <div align="left"><a href="http://jetart.co.uk/"><img src="images/microspring.jpg" alt="Visit jetart.co.uk for more great images" width="194" height="240" border="1"><br>
+        </a><a href="http://creativecommons.org/licenses/by-nc-nd/2.0/" target="creativecommons"><img src="images/icon_creative_commons.gif" alt="license" width="15" height="15" border="0" align="left"></a><font size="-1">Image 
+        by <a href="http://jetart.co.uk/" target="jetart">JetArt</a></font></div></td>
+    <td width="80%" colspan="6"><h1>MicroSpring</h1>
+      <p>By Jonathan Gibbons<br>
+        February 2004</p>
+      <p>All credit to The Spring Framework at <a href="http://www.springframework.org/" target="springframework">http://www.springframework.org/</a>.</p>
+      <p>Everything about MicroSpring is a derivation, reverse engineering, and 
+        plagiarism of the great work done by the Spring Framework team. If you 
+        use IOC and start by playing with MicroSpring you could do worse then 
+        end up with the Spring Framework.</p>
+      <table width="100%" border="1" align="center" cellpadding="0" cellspacing="0" bgcolor="#66FF00">
+        <tr> 
+          <td> 
+            <div align="center"><a href="spring_ioc_1page_guide.html">Spring Framework<br>
+              1 page Guide (html)</a></div></td>
+          <td> 
+            <div align="center"><a href="Spring_1pager.pdf">Spring Framework<br>
+              1 page Guide (PDF)</a></div></td>
+          <td> 
+            <div align="center"><a href="microspring_guide.html">MicroSpring<br>
+              short user guide</a></div></td>
+          <td> 
+            <p align="center"><a href="download.html">Download <br>
+              MicroSpring</a> </p>
+            </td>
+          <td> 
+            <div align="center"><a href="spring_notes.html">Background notes<br>
+              which you can ignore</a></div></td>
+        </tr>
+      </table>
+      <div align="center"></div>
+      <div align="center"></div>
+      <div align="center"></div>
+      <div align="center"></div></td>
+  </tr>
+</table>
+<table width="100%" border="0">
+  <tr>
+    <td width="92%" height="825" valign="top"> 
+      <h3>What is MicroSpring?</h3>
+      <p>It is a JDK 1.5 <a href="http://www.martinfowler.com/articles/injection.html" target="martinfownler">IOC</a> 
+        implementation in a 30k jar file! </p>
+      <p>It is compatible with the Spring 1.1.3 XML format, but only the IOC elements, 
+        and best practice is followed according to the Spring documentation.</p>
+      <p>It's not open source, in terms of a cvs repository, all under sourceforge, 
+        all comers welcome. It is freeware and the src is bundled and you are 
+        free to do anything you like with it. Although I'd rather you didn't stick 
+        it up on the web unchanged and claim it as your own.</p>
+      <h3>WHY? Am I insane?</h3>
+      <p>I finally had a reason to get into Spring, as a client was wanting an 
+        IOC container, and I have some projects of my own that need component 
+        configuration. Spring has been in the news for about a year, and is surviving, 
+        so I found it, downloaded it, installed it and saw the nightmare to the 
+        right.</p>
+      <p>I have no fascination with open source, and have many reasons to distrust 
+        it as a source of large software components. Anyway, given that IOC is 
+        simple, and a framework does not need to be good at everything, I find 
+        myself with a challenge. </p>
+      <h3>The Challenge</h3>
+      <p>Rewrite it with no 3rd party dependencies, and just those parts implemented 
+        that I need. Write it in a weekend - because with a job, several hobbies 
+        and, oh yes, the family, I am time constrained.</p>
+      <h3>The Solution Part 1: Documentation</h3>
+      <p>I want a guide to using IOC in Spring (and MicroSpring) in under a page. 
+        Spring themselves have a large document, and there are now books appearing. 
+        But for IOC I figure a single sheet of paper should be enough. I think 
+        I <a href="spring_ioc_1page_guide.html">succeeded</a>.</p>
+      <h3>The Solution Part 2: A working IOC Spring compatible Framework</h3>
+      <p>As I mentioned, I wrote this in a weekend, a pretty busy weekend, but 
+        a weekend non-the-less (including web site). So the code is a bit hacky, 
+        and needs more love than I can give it. It's part of the download bundle, 
+        so if you fancy improving it and upping the version then stick it on your 
+        own site and I'll link to you.</p>
+      <p>Remember MicroSpring is IOC, Spring compatible in as few lines as possible 
+        with zero library dependencies.</p>
+      <h3>The future of MicroSpring</h3>
+      <p>MicroSpring will remain in development by me, as I need new features. 
+        But only then. Please take it, improve it, edit it. The entire point is 
+        that an IOC framework, compatible with Spring or not, is a simple, small 
+        piece of work. You do not need to pull in vast swathes of unknown code 
+        from the web to achieve this end. JDK1.5 is powerful, cohesive, comprehensive, 
+        supported, free, and you don't risk pulling in terror-ware from the net.</p>
+      <h4>Why not Open Source it under Jakarta?</h4>
+      <p>I have no motivation to do so. I don't deserve any reward or respect 
+        or community for ripping off Spring, or any other IOC container. I also 
+        don't have the time, and frankly, the entire point of MicroSpring is that 
+        you don't need any more features than it has for IOC.</p>
+      </td>
+    <td width="8%"><table width="100%" border="1" cellspacing="0" cellpadding="0">
+        <tr>
+          <td><div align="center"><strong><font size="-1">A Nightmare Of Open 
+              Source - IMHO</font></strong><br>
+              <img src="images/spring_dirlisting.jpg" width="177" height="699"></div></td>
+        </tr>
+      </table>
+      <br>
+    </td>
+  </tr>
+</table>
+<h2>Who am I?</h2>
+<p>I've been working in Java since it came out, from a Corba/C++/OO research background, 
+  who has done the .Net thing and is happy to return to the Java fold. Other sites 
+  I'm involved with:</p>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><div align="center"><a href="http://www.tallsoftware.com/"><img src="images/tallsoft_icon1.gif" width="100" height="100" border="1"></a></div></td>
+    <td><a href="http://www.tallsoftware.com/">Tall Software</a> : thoughts and 
+      techie things from the birth of the common internet onwards (awt 1.1, how 
+      to do html, that kind of thing)</td>
+  </tr>
+  <tr>
+    <td><div align="center"><a href="http://www.faraway.co.uk/"><img src="images/faraway_logo.gif" width="103" height="117" border="1"></a></div></td>
+    <td><a href="http://www.faraway.co.uk/">Faraway Games</a>: an internet war 
+      game I've run since 1998, and where I do my IT training. And fight.</td>
+  </tr>
+  <tr>
+    <td><a href="http://www.emeraldjb.com/index.html"><img src="images/emeraldjb_shines.gif" alt="Emeraldjb - a simple DAO code generator" width="175" height="125" border="1" align="left"></a></td>
+    <td>And Emeraldjb with some fine fellows over the pond. DAO code generation 
+      over runtime generation anytime.</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp; </p>
+<p>&nbsp;</p>
+</body>
+</html>

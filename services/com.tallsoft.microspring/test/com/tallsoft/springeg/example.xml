@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- !DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd"-->
+
+<beans>
+	<!-- example of list and map and ref and property values -->
+	<bean id="cityFinder" class="com.tallsoft.springeg.testobjects.CityScape" singleton="true">	
+		<property name="cityMap">
+			<map>
+				<entry key="LDN"><value>London</value></entry>
+				<entry key="FFT"><value>Frankfurt</value></entry>
+			</map>
+  		</property>
+	</bean>
+	<!-- example of list and depends on for creation ordering-->
+	<bean id="region" class="com.tallsoft.springeg.testobjects.RegionInfo" depends-on="cityFinder">
+		<property name="cityFinder"><ref bean="cityFinder"/></property>
+		<property name="regions">
+        	<list>
+				<value>Europe</value>
+				<value>America</value>
+       		</list>
+     	</property>
+	</bean>
+
+	<!-- example of template, and the init method -->
+	<bean id="templateGeography">
+	    <property name="planetName"><value>Earth</value></property>
+	    <property name="system"><value>sol</value></property>
+	</bean>	
+	<bean id="earth" class="com.tallsoft.springeg.testobjects.PlanetInfo" parent="templateGeography" />
+	<bean id="mars" class="com.tallsoft.springeg.testobjects.PlanetInfo" 
+                      parent="templateGeography">
+		<!-- overriding the value here -->
+ 		<property name="planetName"><value>Mars</value></property>
+	</bean>
+</beans>

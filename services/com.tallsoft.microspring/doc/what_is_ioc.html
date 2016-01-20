@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+<table width="100%" border="0" bgcolor="#66FF00">
+  <tr> 
+    <td width="5%"><a href="index.html"><img src="images/home.jpg" width="49" height="60" border="1" align="middle"></a></td>
+    <td width="95%"><p><font size="+2"><strong>MicroSpring</strong></font><br>
+        A Spring Framework (mainly) compatible IOC container by J.Gibbons, Feb 
+        2005<br>
+        <font size="-1"><a href="http://www.tallsoftware.com/microspring/">http://www.tallsoftware.com/microspring/</a></font> 
+      </p></td>
+  </tr>
+</table>
+<table width="100%" border="1" align="center" cellpadding="0" cellspacing="0" bgcolor="#66FF00">
+  <tr> 
+    <td><a href="index.html">Home</a></td>
+    <td> <div align="center"><a href="spring_ioc_1page_guide.html">Spring Framework<br>
+        1 page Guide (html)</a></div></td>
+    <td> <div align="center"><a href="Spring_1pager.pdf">Spring Framework<br>
+        1 page Guide (PDF)</a></div></td>
+    <td> <div align="center"><a href="microspring_guide.html">MicroSpring<br>
+        short user guide</a></div></td>
+    <td> <p align="center"><a href="download.html">Download <br>
+        MicroSpring</a> </p></td>
+    <td> <div align="center"><a href="spring_notes.html">Background notes<br>
+        which you can ignore</a></div></td>
+  </tr>
+</table>
+<h2>What is IOC?</h2>
+<ul>
+  <li>All your classes have default constructors and no other constructors.</li>
+  <li>All of your classes are java beans (they have get and set methods), and 
+    they never discover anything of the world for themselves. Instead they are 
+    handed all knowledge to them through setter functions, just after they are 
+    created.</li>
+  <li>This is a very simple description, for way more information than the topic 
+    deserves read <a href="http://www.martinfowler.com/articles/injection.html">Martin 
+    Fowler</a>.</li>
+</ul>
+<p>So, if you have a class which uses a datasource, it does not do a lookup through 
+  a singleton to locate the datasource. Instead it has a member variable called 
+  dataSource (say), and a setter called setDataSource(..). You then set up an 
+  xml config file which gives the bean an id, and specify its implementation class, 
+  and the fact that it has a property which should be set with another bean called 
+  datasource. </p>
+<p>Understand? If not, look at the example on the spring <a href="microspring_guide.html">documentation 
+  page</a>, or <a href="spring_ioc_1page_guide.html">micro guide</a>.</p>
+<p>&nbsp;</p></body>
+</html>

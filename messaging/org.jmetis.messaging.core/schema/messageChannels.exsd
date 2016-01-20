@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="org.jmetis.messaging">
+<annotation>
+      <appInfo>
+         <meta.schema plugin="org.jmetis.messaging" id="messageChannels" name="Message Channels"/>
+      </appInfo>
+      <documentation>
+         [Enter description of this extension point.]
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <complexType>
+         <sequence minOccurs="1" maxOccurs="unbounded">
+            <element ref="channel"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="listener">
+      <complexType>
+         <attribute name="class" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn=":at.mic.kernel.core.messaging.IMessageListener"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="filter" type="string">
+            <annotation>
+               <documentation>
+                  The filter attribute is a string containing an LDAP-style filter specification. Any property of the message may be used in the filter expression.
+
+See OSGi Core Specification, section 5.5, for a description of the filter string
+syntax.
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="receiver">
+      <complexType>
+         <attribute name="class" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn=":at.mic.kernel.core.messaging.IMessageReceiver"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="filter" type="string">
+            <annotation>
+               <documentation>
+                  The filter attribute is a string containing an LDAP-style filter specification. Any property of the message may be used in the filter expression.
+
+See OSGi Core Specification, section 5.5, for a description of the filter string
+syntax.
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="channel">
+      <complexType>
+         <choice minOccurs="1" maxOccurs="unbounded">
+            <element ref="listener"/>
+            <element ref="receiver"/>
+         </choice>
+         <attribute name="topic" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The topic attribute is an array of strings that describe the topics to which the a message should be published or should be received.
+
+topic-description := topic?
+topic := token ( &apos;/&apos; token )*
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="since"/>
+      </appInfo>
+      <documentation>
+         [Enter the first release in which this extension point appears.]
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="examples"/>
+      </appInfo>
+      <documentation>
+         [Enter extension point usage example here.]
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="apiInfo"/>
+      </appInfo>
+      <documentation>
+         [Enter API information here.]
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="implementation"/>
+      </appInfo>
+      <documentation>
+         [Enter information about supplied implementation of this extension point.]
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="copyright"/>
+      </appInfo>
+      <documentation>
+         
+      </documentation>
+   </annotation>
+
+</schema>

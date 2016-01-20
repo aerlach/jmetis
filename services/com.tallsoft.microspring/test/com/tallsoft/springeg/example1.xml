@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- !DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd"-->
+
+<beans>
+	<bean id="zipLookup" class="com.tallsoft.springeg.testobjects.ZipCodes" singleton="true">	
+		<property name="lookupTable">
+			<map>
+				<entry key="EC1"><value>City of London</value></entry>
+				<entry key="EC4"><value>Waaaay too far east</value></entry>
+				<entry key="WC4"><value>Waaaay too far west</value></entry>
+			</map>
+  		</property>
+	</bean>
+	<bean id="saturn" class="com.tallsoft.springeg.testobjects.PlanetInfo" 
+                      parent="templateGeography">
+		<!-- overriding the value here -->
+ 		<property name="planetName"><value>Saturn</value></property>
+	</bean>
+</beans>

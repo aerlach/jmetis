@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Exception Plug-in
+Bundle-SymbolicName: org.jmetis.kernel
+Bundle-Version: 1.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: org.jmetis.kernel.assertion,
+ org.jmetis.kernel.closure,
+ org.jmetis.kernel.context,
+ org.jmetis.kernel.exception,
+ org.jmetis.kernel.metadata,
+ org.jmetis.kernel.service

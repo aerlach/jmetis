@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="alias">
+    <xs:complexType>
+      <xs:attribute name="name" type="xs:string" use="required" />
+      <xs:attribute name="alias" type="xs:string" use="required" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="arg-type">
+    <xs:complexType mixed="true">
+      <xs:attribute name="match" type="xs:string" use="optional" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="bean">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="description" minOccurs="0" />
+        <xs:choice>
+          <xs:element ref="constructor-arg" />
+          <xs:element ref="property" />
+          <xs:element ref="lookup-method" />
+          <xs:element ref="replaced-method" />
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="name" type="xs:string" use="optional" />
+      <xs:attribute name="id" type="xs:ID" use="optional" />
+      <xs:attribute name="class" type="xs:string" use="optional" />
+      <xs:attribute name="singleton" use="optional">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="true" />
+            <xs:enumeration value="false" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="factory-method" type="xs:string" use="optional" />
+      <xs:attribute name="dependency-check" use="optional" default="default">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="none" />
+            <xs:enumeration value="objects" />
+            <xs:enumeration value="simple" />
+            <xs:enumeration value="all" />
+            <xs:enumeration value="default" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="lazy-init" use="optional" default="default">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="true" />
+            <xs:enumeration value="false" />
+            <xs:enumeration value="default" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="init-method" type="xs:string" use="optional" />
+      <xs:attribute name="autowire" use="optional" default="default">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="no" />
+            <xs:enumeration value="byName" />
+            <xs:enumeration value="byType" />
+            <xs:enumeration value="constructor" />
+            <xs:enumeration value="autodetect" />
+            <xs:enumeration value="default" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="destroy-method" type="xs:string" use="optional" />
+      <xs:attribute name="abstract" use="optional">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="true" />
+            <xs:enumeration value="false" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="depends-on" type="xs:string" use="optional" />
+      <xs:attribute name="parent" type="xs:string" use="optional" />
+      <xs:attribute name="factory-bean" type="xs:string" use="optional" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="beans">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="description" minOccurs="0" />
+        <xs:choice>
+          <xs:element ref="import" />
+          <xs:element ref="alias" />
+          <xs:element ref="bean" />
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="default-destroy-method" type="xs:string" use="optional" />
+      <xs:attribute name="default-lazy-init" use="optional" default="false">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="true" />
+            <xs:enumeration value="false" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="default-init-method" type="xs:string" use="optional" />
+      <xs:attribute name="default-dependency-check" use="optional" default="none">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="none" />
+            <xs:enumeration value="objects" />
+            <xs:enumeration value="simple" />
+            <xs:enumeration value="all" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="default-autowire" use="optional" default="no">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="no" />
+            <xs:enumeration value="byName" />
+            <xs:enumeration value="byType" />
+            <xs:enumeration value="constructor" />
+            <xs:enumeration value="autodetect" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="constructor-arg">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="description" minOccurs="0" />
+        <xs:choice>
+          <xs:element ref="bean" />
+          <xs:element ref="ref" />
+          <xs:element ref="idref" />
+          <xs:element ref="value" />
+          <xs:element ref="null" />
+          <xs:element ref="list" />
+          <xs:element ref="set" />
+          <xs:element ref="map" />
+          <xs:element ref="props" />
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="index" type="xs:string" use="optional" />
+      <xs:attribute name="type" type="xs:string" use="optional" />
+      <xs:attribute name="ref" type="xs:string" use="optional" />
+      <xs:attribute name="value" type="xs:string" use="optional" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="description">
+    <xs:complexType mixed="true" />
+  </xs:element>
+
+  <xs:element name="entry">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="key" minOccurs="0" />
+        <xs:choice>
+          <xs:element ref="bean" />
+          <xs:element ref="ref" />
+          <xs:element ref="idref" />
+          <xs:element ref="value" />
+          <xs:element ref="null" />
+          <xs:element ref="list" />
+          <xs:element ref="set" />
+          <xs:element ref="map" />
+          <xs:element ref="props" />
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="value-ref" type="xs:string" use="optional" />
+      <xs:attribute name="key" type="xs:string" use="optional" />
+      <xs:attribute name="value" type="xs:string" use="optional" />
+      <xs:attribute name="key-ref" type="xs:string" use="optional" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="idref">
+    <xs:complexType>
+      <xs:attribute name="bean" type="xs:string" use="optional" />
+      <xs:attribute name="local" type="xs:IDREF" use="optional" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="import">
+    <xs:complexType>
+      <xs:attribute name="resource" type="xs:string" use="required" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="key">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice>
+          <xs:element ref="bean" />
+          <xs:element ref="ref" />
+          <xs:element ref="idref" />
+          <xs:element ref="value" />
+          <xs:element ref="null" />
+          <xs:element ref="list" />
+          <xs:element ref="set" />
+          <xs:element ref="map" />
+          <xs:element ref="props" />
+        </xs:choice>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="list">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice>
+          <xs:element ref="bean" />
+          <xs:element ref="ref" />
+          <xs:element ref="idref" />
+          <xs:element ref="value" />
+          <xs:element ref="null" />
+          <xs:element ref="list" />
+          <xs:element ref="set" />
+          <xs:element ref="map" />
+          <xs:element ref="props" />
+        </xs:choice>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="lookup-method">
+    <xs:complexType>
+      <xs:attribute name="bean" type="xs:string" use="optional" />
+      <xs:attribute name="name" type="xs:string" use="optional" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="map">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:sequence>
+          <xs:element ref="entry" />
+        </xs:sequence>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="null">
+    <xs:complexType mixed="true" />
+  </xs:element>
+
+  <xs:element name="prop">
+    <xs:complexType mixed="true">
+      <xs:attribute name="key" type="xs:string" use="required" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="property">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="description" minOccurs="0" />
+        <xs:choice>
+          <xs:element ref="bean" />
+          <xs:element ref="ref" />
+          <xs:element ref="idref" />
+          <xs:element ref="value" />
+          <xs:element ref="null" />
+          <xs:element ref="list" />
+          <xs:element ref="set" />
+          <xs:element ref="map" />
+          <xs:element ref="props" />
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="name" type="xs:string" use="required" />
+      <xs:attribute name="ref" type="xs:string" use="optional" />
+      <xs:attribute name="value" type="xs:string" use="optional" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="props">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:sequence>
+          <xs:element ref="prop" />
+        </xs:sequence>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="ref">
+    <xs:complexType>
+      <xs:attribute name="bean" type="xs:string" use="optional" />
+      <xs:attribute name="local" type="xs:IDREF" use="optional" />
+      <xs:attribute name="parent" type="xs:string" use="optional" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="replaced-method">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:sequence>
+          <xs:element ref="arg-type" />
+        </xs:sequence>
+      </xs:sequence>
+      <xs:attribute name="name" type="xs:string" use="optional" />
+      <xs:attribute name="replacer" type="xs:string" use="optional" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="set">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice>
+          <xs:element ref="bean" />
+          <xs:element ref="ref" />
+          <xs:element ref="idref" />
+          <xs:element ref="value" />
+          <xs:element ref="null" />
+          <xs:element ref="list" />
+          <xs:element ref="set" />
+          <xs:element ref="map" />
+          <xs:element ref="props" />
+        </xs:choice>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="value">
+    <xs:complexType mixed="true">
+      <xs:attribute name="type" type="xs:string" use="optional" />
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>

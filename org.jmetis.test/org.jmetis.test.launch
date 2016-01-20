@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.pde.ui.JunitLaunchConfig">
+<booleanAttribute key="append.args" value="true"/>
+<stringAttribute key="application" value="org.eclipse.pde.junit.runtime.coretestapplication"/>
+<booleanAttribute key="askclear" value="false"/>
+<booleanAttribute key="automaticAdd" value="true"/>
+<booleanAttribute key="automaticValidate" value="true"/>
+<stringAttribute key="bootstrap" value=""/>
+<stringAttribute key="checked" value="[NONE]"/>
+<booleanAttribute key="clearConfig" value="true"/>
+<booleanAttribute key="clearws" value="true"/>
+<booleanAttribute key="clearwslog" value="false"/>
+<stringAttribute key="configLocation" value="${workspace_loc}/.metadata/.plugins/org.eclipse.pde.core/pde-junit"/>
+<booleanAttribute key="default" value="false"/>
+<stringAttribute key="deselected_workspace_plugins" value="com.hexapixel.widgets,javax.activation,net.miginfocom.layout,javax.xml.bind,abbot.swt.eclipse,at.mic.persistence.server,com.oracle.jdbc,org.apache.commons.collections,at.mic.kernel.test,org.apache.log4j,com.gerhardtinformatics.rcprobot,de.odysseus.el,at.mic.rcp.core,org.eclipse.nebula.jface.gridviewer,at.mic.remote.dnssd,at.mic.kernel.transform,at.mic.persistence.core,at.mic.remote.client,at.mic.ccs.model,at.mic.kernel.login,javax.jms,org.codehaus.jettison,at.mic.rcp.core.test,at.mic.ccs.test,at.mic.jdt.junit,org.apache.commons.pool,at.mic.sandbox,at.mic.ui.rcp,org.eclipse.nebula.widgets.cdatetime,at.mic.remote.server,at.mic.ui.test,org.jivedns,at.mic.kernel.core,org.apache.commons.beanutils,abbot.swt,com.thoughtworks.xstream,org.xmlpull,at.mic.kernel.management,at.mic.remote.test,org.apache.openjpa,at.mic.all.rcp,at.mic.persistence.test,javax.resource,at.mic.ccs.rcp,net.sourceforge.serp,at.mic.all.model,at.mic.rcp.resources,at.mic.all.test,at.mic.ui.core,at.mic.persistence.client,org.apache.commons.lang,at.mic.all.core,javax.transaction,org.objectweb.asm.core,javax.persistence,at.mic.kernel.eclipse,org.eclipse.nebula.widgets.formattedtext,org.hsqldb,at.mic.remote.core"/>
+<booleanAttribute key="includeOptional" value="true"/>
+<stringAttribute key="location" value="${workspace_loc}/../junit-workspace"/>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/org.jmetis.test"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="4"/>
+</listAttribute>
+<stringAttribute key="org.eclipse.jdt.junit.CONTAINER" value="=org.jmetis.test"/>
+<booleanAttribute key="org.eclipse.jdt.junit.KEEPRUNNING_ATTR" value="false"/>
+<stringAttribute key="org.eclipse.jdt.junit.TESTNAME" value=""/>
+<stringAttribute key="org.eclipse.jdt.junit.TEST_KIND" value="org.eclipse.jdt.junit.loader.junit4"/>
+<stringAttribute key="org.eclipse.jdt.launching.JRE_CONTAINER" value="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5"/>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value=""/>
+<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-os ${target.os} -ws ${target.ws} -arch ${target.arch} -nl ${target.nl}"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="org.jmetis.test"/>
+<stringAttribute key="org.eclipse.jdt.launching.SOURCE_PATH_PROVIDER" value="org.eclipse.pde.ui.workbenchClasspathProvider"/>
+<stringAttribute key="pde.version" value="3.3"/>
+<stringAttribute key="product" value="at.mic.rcp.core.product"/>
+<stringAttribute key="selected_target_plugins" value="org.eclipse.core.contenttype,org.eclipse.help,org.eclipse.core.databinding,org.eclipse.equinox.preferences,org.eclipse.core.net,org.eclipse.swt,org.eclipse.update.configurator,org.junit4,org.eclipse.core.variables,org.eclipse.osgi.services,org.eclipse.swt.gtk.linux.x86,org.eclipse.osgi.util,javax.servlet,org.eclipse.ui.views,org.eclipse.core.net.linux.x86,org.eclipse.core.filesystem.linux.x86,org.eclipse.text,org.eclipse.jface,org.eclipse.core.resources.compatibility,org.eclipse.core.expressions,org.eclipse.update.core.linux,org.eclipse.equinox.security,org.eclipse.core.runtime,org.eclipse.update.core,org.eclipse.osgi,org.eclipse.ant.core,org.eclipse.core.runtime.compatibility.auth,org.eclipse.equinox.registry,org.eclipse.ui.forms,org.eclipse.core.jobs,org.eclipse.ui.workbench,org.eclipse.ui.ide,org.eclipse.core.commands,org.eclipse.update.ui,org.eclipse.core.runtime.compatibility.registry,org.eclipse.ui,org.eclipse.core.filesystem,org.eclipse.jface.text,org.eclipse.jface.databinding,org.eclipse.core.resources,org.eclipse.equinox.common,org.eclipse.equinox.app,com.ibm.icu"/>
+<booleanAttribute key="show_selected_only" value="false"/>
+<booleanAttribute key="tracing" value="false"/>
+<booleanAttribute key="useDefaultConfig" value="true"/>
+<booleanAttribute key="useDefaultConfigArea" value="false"/>
+<booleanAttribute key="useProduct" value="false"/>
+</launchConfiguration>

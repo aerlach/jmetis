@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Comparators
+Bundle-SymbolicName: org.jmetis.kernel.comparator
+Bundle-Version: 1.0.0
+Bundle-Vendor: jmetis.org
+Bundle-RequiredExecutionEnvironment: J2SE-1.5

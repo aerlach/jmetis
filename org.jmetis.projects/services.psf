@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<psf version="2.0">
+<provider id="org.eclipse.team.svn.core.svnnature">
+<project reference="1.0.1,https://svn.jmetis.org/svnroot/jmetis/trunk/services/com.tallsoft.microspring,com.tallsoft.microspring,e02fe66f7f03001e1472dbf9b26ece2a;https://svn.jmetis.org/svnroot/jmetis;https://svn.jmetis.org/svnroot/jmetis;branches;tags;trunk;true;a4cea47c-9da7-43cd-9762-f7486927af29;https://svn.jmetis.org/svnroot/jmetis;;false;&lt;https://svn.jmetis.org:443&gt; SourceForge Subversion area;;22"/>
+<project reference="1.0.1,https://svn.jmetis.org/svnroot/jmetis/trunk/services/org.apache.felix.dependencymanager,org.apache.felix.dependencymanager,e02fe66f7f03001e1472dbf9b26ece2a;https://svn.jmetis.org/svnroot/jmetis;https://svn.jmetis.org/svnroot/jmetis;branches;tags;trunk;true;a4cea47c-9da7-43cd-9762-f7486927af29;https://svn.jmetis.org/svnroot/jmetis;;false;&lt;https://svn.jmetis.org:443&gt; SourceForge Subversion area;;22"/>
+<project reference="1.0.1,https://svn.jmetis.org/svnroot/jmetis/trunk/services/org.jmetis.services.core,org.jmetis.services.core,e02fe66f7f03001e1472dbf9b26ece2a;https://svn.jmetis.org/svnroot/jmetis;https://svn.jmetis.org/svnroot/jmetis;branches;tags;trunk;true;a4cea47c-9da7-43cd-9762-f7486927af29;https://svn.jmetis.org/svnroot/jmetis;;false;&lt;https://svn.jmetis.org:443&gt; SourceForge Subversion area;;22"/>
+</provider>
+<workingSets editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" label="services" name="services">
+<item elementID="=com.tallsoft.microspring" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.apache.felix.dependencymanager" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.jmetis.services.core" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSets>
+</psf>

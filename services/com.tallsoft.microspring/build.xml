@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="microspring" default="help" basedir=".">
+
+<target name="setenv">
+	<property name="VERSION"       value="1.03" />
+	<property name="PROJ_DIR" 		value="${basedir}" />
+	<property name="CODEGEN_DIR"	value="${PROJ_DIR}/src" />
+	<property name="BUILD_DIR" 		value="${PROJ_DIR}/build/" />
+	<property name="ZIP_BASE_DIR" 	value="${PROJ_DIR}/release" />
+	<property name="RELEASE_DIR" 	value="${ZIP_BASE_DIR}/microspring_${VERSION}" />
+	<property name="DIST_DIR" 		value="${PROJ_DIR}/dist" />
+
+	<property name="DOC_DIR" 		value="${PROJ_DIR}/doc" />
+	<property name="SRC_DIR" 		value="${PROJ_DIR}/src" />
+</target>
+
+
+<path id="project.class.classpath">
+  <pathelement location="${SRC_DIR}" />
+</path>
+
+
+<target name="help" depends="setenv">
+<echo>
+MicroSpring ant build file.
+============================
+Using Ant 1.6.2, from www.apache.org, jakarta project.
+For unit testing use JUnit 3.8.1 within Eclipse 3.1
+
+The targets are devided in two.  The first set will work for the microspring release.
+	help 		For this
+	cleancode 	to clear out all build products
+	buildcode 	builds the code into the build dir, but nothing else.
+
+The next two are only for use by Jonathan when doing the release.
+	release		does a release build to create a versioned jar file
+	dist		For the distribution build, all src etc into a single zip
+</echo>
+</target>
+
+
+<target name="init"  depends="setenv">
+    <!-- Create the time stamp -->
+    <tstamp/>
+    <!-- Create the build directory structure used by compile -->
+    <mkdir dir="${RELEASE_DIR}" />
+    <mkdir dir="${BUILD_DIR}" />
+
+    <mkdir dir="${BUILD_DIR}/" />
+    <delete dir="${BUILD_DIR}/" />
+    <mkdir dir="${BUILD_DIR}/" />
+
+    <mkdir dir="${ZIP_BASE_DIR}/" />
+    <delete dir="${ZIP_BASE_DIR}/" />
+    <mkdir dir="${RELEASE_DIR}/lib" />
+
+    <mkdir dir="${DIST_DIR}/" />
+</target>
+
+
+<target name="cleancode" depends="init">
+    <!-- Delete the class files in the build apps area -->
+    <delete dir="${BUILD_DIR}/com/" />
+
+    <delete>
+      <fileset dir="${PROJ_DIR}/src">
+        <include name="**/*.class" />
+      </fileset>
+    </delete>
+</target>
+
+<target name="buildcode"  depends="cleancode" >
+    <!-- Compile the java code from ${src} into ${build} -->
+    <javac srcdir="${SRC_DIR}" 
+           destdir="${BUILD_DIR}"
+           debug="true" >
+      <classpath refid="project.class.classpath"/>
+    </javac>
+</target>
+
+<target name="release"  depends="buildcode" >
+    <echo>Now do the build...</echo>
+    <jar jarfile="${RELEASE_DIR}/lib/microspring_${VERSION}.jar" basedir="${BUILD_DIR}">
+        <manifest>
+          <attribute name="Created-By" value="Jonathan Gibbons"/>
+          <section name="/com/tallsoft/microspring/">
+            <attribute name="Sealed" value="true"/>
+          </section>
+          <section name="common">
+            <attribute name="Specification-Title" value="MicroSpring"/>
+            <attribute name="Specification-Version" value="${VERSION}"/>
+            <attribute name="Specification-Vendor" value="Tall Software Limited"/>
+            <attribute name="Implementation-Title" value="MicroSpring IOC container"/>
+            <attribute name="Implementation-Version" value="${VERSION} ${TODAY}"/> 
+            <attribute name="Implementation-Vendor" value="Tall Software Limited"/>
+          </section>
+        </manifest>
+    </jar>
+
+    <copy todir="${RELEASE_DIR}/docs/" >
+      <fileset dir="${PROJ_DIR}/docs/website/"  includes="*.html,*.pdf" />
+    </copy>
+    <copy tofile="${RELEASE_DIR}/docs/images/home.jpg" 
+    	file="${PROJ_DIR}/docs/website/images/home.jpg"/>
+    <copy tofile="${RELEASE_DIR}/docs/images/icon_creative_commons.gif" 
+    	file="${PROJ_DIR}/docs/website/images/icon_creative_commons.gif"/>
+    <copy tofile="${RELEASE_DIR}/docs/images/microspring.jpg" 
+    	file="${PROJ_DIR}/docs/website/images/microspring.jpg"/>
+    <copy tofile="${RELEASE_DIR}/docs/images/spring_dirlisting.jpg" 
+    	file="${PROJ_DIR}/docs/website/images/spring_dirlisting.jpg"/>
+
+	
+	<copy todir="${RELEASE_DIR}/src/" >
+      <fileset dir="${SRC_DIR}/"  includes="**/*.java" />
+    </copy>
+    <copy todir="${RELEASE_DIR}/src_test" >
+      <fileset dir="${PROJ_DIR}/src_test"  includes="**/*.java, **/*.xml" />
+    </copy>
+    <copy tofile="${RELEASE_DIR}/build.xml" file="${PROJ_DIR}/build.xml"/>
+    <copy tofile="${RELEASE_DIR}/readme.txt" file="${PROJ_DIR}/docs/release_readme.txt"/>
+	
+</target>
+	
+<target name="dist" depends="release" >
+	<zip destfile="${DIST_DIR}/microspring_${VERSION}.zip"
+			basedir="${ZIP_BASE_DIR}"/>
+	
+    <copy tofile="${PROJ_DIR}/docs/website/dist/microspring_${VERSION}.zip" file="${DIST_DIR}/microspring_${VERSION}.zip"/>
+	<echo>
+	Note to Jonathan:
+		Don't forget to ftp the new dist up to the web site and update the dreamweaver link.
+	</echo>
+</target>
+	
+</project>
+
+

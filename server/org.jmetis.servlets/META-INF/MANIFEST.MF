@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Servlet Extensions
+Bundle-SymbolicName: org.jmetis.servlets
+Bundle-Version: 1.0.0.qualifier
+Export-Package: org.jmetis.servlets.service
+Bundle-Vendor: jmetis.org
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Require-Bundle: javax.servlet;bundle-version="2.5.0",
+ javax.jmdns;bundle-version="2.1.0"

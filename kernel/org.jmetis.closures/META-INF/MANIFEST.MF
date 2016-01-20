@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Kernel Closures Plug-in
+Bundle-SymbolicName: org.jmetis.closures
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: jmetis.org
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: org.jmetis.closures.composite,
+ org.jmetis.closures.core,
+ org.jmetis.closures.decorator
+Require-Bundle: org.jmetis.kernel;bundle-version="1.0.0"

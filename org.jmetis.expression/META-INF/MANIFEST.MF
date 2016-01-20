@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Java Unified Expression Language Plug-in
+Bundle-SymbolicName: org.jmetis.expression
+Bundle-Version: 1.0.0
+Bundle-Vendor: www.jmetis.org
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Require-Bundle: javax.el;bundle-version="1.0.0"

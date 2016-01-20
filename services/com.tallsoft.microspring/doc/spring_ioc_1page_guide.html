@@ -1,0 +1,173 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Spring IOC One Page Guide</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+<table width="100%" border="0" bgcolor="#66FF00">
+  <tr> 
+    <td width="5%"><a href="index.html"><img src="images/home.jpg" width="49" height="60" border="1" align="middle"></a></td>
+    <td width="95%"><p><font size="+2"><strong>MicroSpring</strong></font><br>
+        A Spring Framework (mainly) compatible IOC container by J.Gibbons, Feb 
+        2005<br>
+        <font size="-1"><a href="http://www.tallsoftware.com/microspring/">http://www.tallsoftware.com/microspring/</a></font> 
+      </p></td>
+  </tr>
+</table>
+<table width="100%" border="1" align="center" cellpadding="0" cellspacing="0" bgcolor="#66FF00">
+  <tr> 
+    <td><a href="index.html">Home</a></td>
+    <td> <div align="center"><a href="spring_ioc_1page_guide.html">Spring Framework<br>
+        1 page Guide (html)</a></div></td>
+    <td> <div align="center"><a href="Spring_1pager.pdf">Spring Framework<br>
+        1 page Guide (PDF)</a></div></td>
+    <td> <div align="center"><a href="microspring_guide.html">MicroSpring<br>
+        short user guide</a></div></td>
+    <td> <p align="center"><a href="download.html">Download <br>
+        MicroSpring</a> </p></td>
+    <td> <div align="center"><a href="spring_notes.html">Background notes<br>
+        which you can ignore</a></div></td>
+  </tr>
+</table>
+<p align="center">The Spring IOC Guide in a single sheet of paper! Either print 
+  this off, or <a href="Spring_1pager_v1.0.pdf">download the PDF</a> version.</p>
+<table width="100%" border="1" bgcolor="#CCCCCC">
+  <tr> 
+    <td>All you need to know! (for the average user, on green field project )<br>
+      Source: C:\&lt;install dir&gt;\spring-framework-1.1.3\docs\reference\html_single\index.html</td>
+  </tr>
+</table>
+<table width="100%" border="1">
+  <tr>
+    <td>Note from the author.<br>
+      I only use Spring for IOC, not for AOP, not for DAO, not for JDBC rewrite, 
+      not for Web, or every other part of my system. I have a JVM and an OS, I 
+      do not need yet another J2EE. This is my personal choice, and one I am extremely 
+      happy with.</td>
+  </tr>
+</table>
+<table width="100%" border="1" bgcolor="#CCCCCC">
+  <tr> 
+    <td>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td>All the notes you need on Spring IOC.</td>
+        </tr>
+        <tr>
+          <td><ul>
+              <li>Avoid anything that ties your code to the spring framework. 
+              </li>
+              <li>Do use ApplicationListener to get refresh and close events for 
+                your singletons on close down (even though it is a spring interface).</li>
+              <li>Use setters and not constructors for injection.</li>
+              <li>For most users, beans in the container will be singletons. They 
+                are created at startup by the app context unless lazy-load=&quot;true&quot;</li>
+              <li>Use &lt;ref bean=&quot;theBeanId&quot;/&gt; to inject other 
+                beans into properties.</li>
+              <li>To force order of creation you can use the depends-on=&#8221;beanId&#8221; 
+              </li>
+              <li>If you need lifecycle then use the init-method and destroy-method 
+                attributes. Only do this on singleton beans. &lt;bean id=&quot;egBean&quot; 
+                class=&quot;foo&quot; init-method=&quot;init&quot; destroy-method=&quot;cleanup&quot;/&gt;</li>
+              <li>Template beans avoid repitition; the abstract and parent attributes.</li>
+              <li>Use ApplicationContext as your bean factory</li>
+              <li>Do not use spring ApplicationListeners for broadcast of your 
+                own events &#8211; write your own mechanism and avoid being tied 
+                to spring. Event frameworks are very simple!</li>
+              <li>ApplicationContextAware interface has method setApplicationContext() 
+                which the app context calls, allows the use of app contexts (resources, 
+                events etc) &#8211; but it ties you to spring!</li>
+              <li>Data source beans are great, select your db pool implementation, 
+                define a datasource bean or set of them and inject it in.</li>
+              <li>changing the auto wiring mode is discouraged. i.e. the default 
+                works out dependencies, and creation ordering.</li>
+            </ul></td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<table width="100%" border="1">
+  <tr> 
+<<<<<<< .mine
+    <td>
+<pre>Client Code:
+
+         FileSystemXmlApplicationContext factory = new XmlBeanFactory(&quot;config.xml&quot;);</pre></td>
+=======
+    <td>
+<pre>Client Code:
+  FileSystemXmlApplicationContext factory = new FileSystemXmlApplicationContext(&quot;config.xml&quot;);</pre></td>
+>>>>>>> .r28
+  </tr>
+</table>
+<table width="100%" border="1" bgcolor="#CCCCCC">
+  <tr> 
+    <td><pre>BeanFactory methods:
+         boolean containsBean(String) 
+         Object getBean(String)throws BeansException; 
+         Object getBean(String,Class) throws BeansException;          
+         boolean isSingleton(String) throws NoSuchBeanDefinitionException 
+         Class getType(String name) throws NoSuchBeanDefinitionException; 
+         String[] getAliases(String)throws NoSuchBeanDefinitionException;</pre>
+      </td>
+  </tr>
+</table>
+<table width="100%" border="1">
+  <tr> 
+    <td><p>Null param value null = &lt;property name=&quot;email&quot;&gt;&lt;null/&gt;&lt;/property&gt;<br>
+        Empty string value &quot;&quot; = &lt;property name=&quot;email&quot;&gt;&lt;/property&gt;</p>
+      <p> The list, set, map, and props elements allow properties and arguments 
+        of Java type List, Set, Map, and Properties, respectively, to be defined 
+        and set.</p></td>
+  </tr>
+</table>
+<table width="100%" border="1" bgcolor="#CCCCCC">
+  <tr> 
+    <td height="465"> 
+      <pre>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE beans PUBLIC &quot;-//SPRING//DTD BEAN//EN&quot; &quot;http://www.springframework.org/dtd/spring-beans.dtd&quot;&gt;
+&lt;beans&gt;
+&lt;!-- example of list and map and idref and property values --&gt;	
+&lt;bean id=&quot;cityFinder&quot; class=&quot;com.tallsoft.springeg.CityScape&quot; singleton=&quot;true&quot;&gt;		
+	&lt;property name=&quot;cityMap&quot;&gt;      
+         &lt;map&gt;		
+             &lt;entry key=&quot;LDN&quot;&gt;&lt;value&gt;London&lt;/value&gt;&lt;/entry&gt;	
+             &lt;entry key=&quot;FFT&quot;&gt;&lt;value&gt;Frankfurt&lt;/value&gt;&lt;/entry&gt;	  
+         &lt;/map&gt;        
+    &lt;/property&gt;
+&lt;/bean&gt;
+&lt;!-- example of list and depends on for creation ordering--&gt;	
+&lt;bean id=&quot;region&quot; class=&quot;com.tallsoft.springeg.RegionInfo&quot; depends-on=&quot;cityFinder&quot;&gt;		
+    &lt;property name=&quot;cityFinder&quot;&gt;&lt;ref bean=&quot;cityFinder&quot;/&gt;&lt;/property&gt;		
+    &lt;property name=&quot;regions&quot;&gt;           
+         &lt;list&gt;		
+	         &lt;value&gt;Europe&lt;/value&gt;	
+		     &lt;value&gt;America&lt;/value&gt;  
+         &lt;/list&gt;   
+    &lt;/property&gt;
+&lt;/bean&gt;
+&lt;!-- example of template, and the init method --&gt;	
+&lt;bean id=&quot;templateGeography&quot; abstract=&quot;true&quot;
+         class=&quot;com.tallsoftware.springeg.BaseGeography&quot;&gt;	 
+    &lt;property name=&quot;planetName&quot;&gt;&lt;value&gt;Earth&lt;/value&gt;&lt;/property&gt;	
+    &lt;property name=&quot;system&quot;&gt;&lt;value&gt;sol&lt;/value&gt;&lt;/property&gt;
+&lt;/bean&gt;
+&lt;bean id=&quot;earth&quot; class=&quot;com.tallsoft.springeg.PlanetInfo&quot;
+                  parent=&quot;templateGeography&quot; /&gt;	
+&lt;bean id=&quot;mars&quot; class=&quot;com.tallsoft.springeg.PlanetInfo&quot;     
+                  parent=&quot;templateGeography&quot; init-method=&quot;initialize&quot;&gt;		
+        &lt;!-- overriding the value here --&gt;
+        &lt;property name=&quot;planetName&quot;&gt;&lt;value&gt;Mars&lt;/value&gt;&lt;/property&gt;
+    &lt;/bean&gt;
+&lt;/beans&gt;
+</pre></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</body>
+</html>

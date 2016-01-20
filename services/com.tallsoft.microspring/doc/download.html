@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>MicroSpring download</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+<table width="100%" border="0" bgcolor="#66FF00">
+  <tr> 
+    <td width="5%"><a href="index.html"><img src="images/home.jpg" width="49" height="60" border="1" align="middle"></a></td>
+    <td width="95%"><p><font size="+2"><strong>MicroSpring</strong></font><br>
+        A Spring Framework (mainly) compatible IOC container by J.Gibbons, Feb 
+        2005<br>
+        <font size="-1"><a href="http://www.tallsoftware.com/microspring/">http://www.tallsoftware.com/microspring/</a></font> 
+      </p></td>
+  </tr>
+</table>
+<table width="100%" border="1" align="center" cellpadding="0" cellspacing="0" bgcolor="#66FF00">
+  <tr>
+    <td><a href="index.html">Home</a></td>
+    <td> <div align="center"><a href="spring_ioc_1page_guide.html">Spring Framework<br>
+        1 page Guide (html)</a></div></td>
+    <td> <div align="center"><a href="Spring_1pager.pdf">Spring Framework<br>
+        1 page Guide (PDF)</a></div></td>
+    <td> <div align="center"><a href="microspring_guide.html">MicroSpring<br>
+        short user guide</a></div></td>
+    <td> <p align="center"><a href="download.html">Download <br>
+        MicroSpring</a> </p></td>
+    <td> <div align="center"><a href="spring_notes.html">Background notes<br>
+        which you can ignore</a></div></td>
+  </tr>
+</table>
+<h2>Download</h2>
+<p>Its a zip file, and there is a readme which tells you everything you need to 
+  know.</p>
+<p>The release contains this web site, the jar file and the source bundle suitable 
+  for an eclipse 3.1 project.</p>
+<table width="100%" border="1" cellspacing="0" cellpadding="0">
+  <tr bgcolor="#66FF00"> 
+    <td width="20%">Version </td>
+    <td width="15%">Date</td>
+    <td width="47%">Description/issues</td>
+    <td width="18%">Download link</td>
+  </tr>
+  <tr>
+    <td valign="top">Version 1.03</td>
+    <td valign="top">soon</td>
+    <td><ul>
+        <li>Change lazy-load attribute to lazy-init. The spring docn calls it 
+          both names, but lazy-init is the correct one.</li>
+        <li>Change the FileSystemXmlApplicationContext so that the constructor 
+          calls refresh internally - as with real spring.</li>
+        <li>Allow beans to have no class defn, and no abstract attribute, spring 
+          simply treats these beans as templates.</li>
+      </ul></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td valign="top">Version 1.02</td>
+    <td valign="top">Feb 17th 2005</td>
+    <td>Change &lt;idref&gt;beanId&lt;/idref&gt; to be <br> &lt;ref bean=&quot;beanId&quot;/&gt; 
+      as per the Spring spec. Cramming last weekend meant I read that wrong!</td>
+    <td><a href="dist/microspring_1.02.zip">microspring_1.02.zip</a></td>
+  </tr>
+  <tr> 
+    <td valign="top">Version 1.01</td>
+    <td valign="top">Feb 16th 2005</td>
+    <td><p>New features to make more Spring compliant.</p>
+      <ul>
+        <li>Replace XmlBeanFactory with FileSystemXmlApplicationContext (i.e. 
+          change the class name)</li>
+        <li>Make beans singletons by default</li>
+        <li>init all singletons at start up unless lazy load</li>
+        <li>add lazy load attrinute</li>
+        <li>added circular dependency checks</li>
+      </ul></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td valign="top">Version 1.0</td>
+    <td valign="top">Feb 13th 2005</td>
+    <td>Two days of effort has produced a code base with tests that pass and thats 
+      enough for me (for now). No doubt I will find improvements as I start to 
+      use it.</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</body>
+</html>

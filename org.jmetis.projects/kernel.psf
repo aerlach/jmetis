@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<psf version="2.0">
+<provider id="org.eclipse.team.svn.core.svnnature">
+<project reference="1.0.1,https://svn.jmetis.org/svnroot/jmetis/trunk/kernel/org.jmetis.closures,org.jmetis.closures"/>
+<project reference="1.0.1,https://svn.jmetis.org/svnroot/jmetis/trunk/kernel/org.jmetis.collections,org.jmetis.collections"/>
+<project reference="1.0.1,https://svn.jmetis.org/svnroot/jmetis/trunk/kernel/org.jmetis.kernel,org.jmetis.kernel"/>
+<project reference="1.0.1,https://svn.jmetis.org/svnroot/jmetis/trunk/kernel/org.jmetis.resources,org.jmetis.resources"/>
+</provider>
+<workingSets editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" label="kernel" name="kernel">
+<item elementID="=org.jmetis.closures" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.jmetis.collections" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.jmetis.kernel" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.jmetis.resources" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSets>
+</psf>

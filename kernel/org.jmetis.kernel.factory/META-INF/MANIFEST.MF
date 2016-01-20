@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Generic Factories
+Bundle-SymbolicName: org.jmetis.kernel.factory
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: jmetis.org
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: org.jmetis.kernel.factory
+Require-Bundle: org.jmetis.kernel;bundle-version="1.0.0";visibility:=reexport

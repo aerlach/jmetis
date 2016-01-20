@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Observable Plug-in
+Bundle-SymbolicName: org.jmetis.observable
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: jmetis.org
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: org.jmetis.observable,
+ org.jmetis.observable.collection,
+ org.jmetis.observable.object
+Require-Bundle: javax.el;bundle-version="1.0.0";resolution:=optional;visibility:=reexport,
+ org.jmetis.reflection;bundle-version="1.0.0"

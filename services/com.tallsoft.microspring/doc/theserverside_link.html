@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+<table width="100%" border="0" bgcolor="#66FF00">
+  <tr> 
+    <td width="5%"><a href="index.html"><img src="images/home.jpg" width="49" height="60" border="1" align="middle"></a></td>
+    <td width="95%"><p><font size="+2"><strong>MicroSpring</strong></font><br>
+        A Spring Framework (mainly) compatible IOC container by J.Gibbons, Feb 
+        2005<br>
+        <font size="-1"><a href="http://www.tallsoftware.com/microspring/">http://www.tallsoftware.com/microspring/</a></font> 
+      </p></td>
+  </tr>
+</table>
+<p><a href="http://www.theserverside.com/"><img src="images/serverside_1.gif" alt="The Server Side" width="177" height="38" border="0" align="left"></a>The 
+  Server Side have kindly linked to MicroSpring. Here I try to explain very briefly 
+  the reasoning that led to MicroSpring.</p>
+<p>First, a bow to the <a href="http://www.springframework.org/" target="spring">Spring 
+  Framework</a> team, who have produced a great framework, and if you need a total 
+  solution it's where you should go. However, my perspective is that I need a 
+  smaller implementation and do not need many of it's features. Also an IOC framework 
+  should be simple to learn, a page or two of documentation at most. </p>
+<p>I have not yet talked to the Spring team, I am not endorsed by the Spring Framework, 
+  and I am not competing in some rabid open source slanging match. I just want 
+  a smaller code base, and no 3rd party library dependencies. Now, on to the kernel 
+  of the matter.</p>
+<h3>My Requirements</h3>
+<p>To replace existing in-house, context based xml configurations with an IOC, 
+  test friendly framework. The solution to be used on many small to medium sized 
+  projects. Modules/sub-system running within the framework to be micro-bootable.</p>
+<h3>The Assertion</h3>
+<p>IOC is not hard, the Spring Framework has become the prominant implementation. 
+  However, the Spring Framework does far more than IOC, and is now the size of 
+  an alternative J2EE, with hooks to many other currently popular open source 
+  technologies. It is micro-bootable through the refresh functions on the ApplicationContexts 
+  (bean factories) - but I really need direct control of this.</p>
+<p>Also, JDK1.5 is powerful, cohesive, comprehensive, supported, free, and you 
+  don't risk pulling in terror-ware from the net. So an IOC framework based upon 
+  this should need nothing else.</p>
+<h3>The Proposal</h3>
+<p>To strip away all the non IOC parts of Spring. Not only that, but to remove 
+  all the customisations of IOC within Spring, to leave a single small implementation. 
+  One with few lines of code, and zero dependencies on other open source. To embrace 
+  JDK1.5 in terms of new core libs and the new language features.</p>
+<h3>The solution</h3>
+<p>To write a new IOC container. One which is compatible with Spring, but a vastly 
+  smaller framework. Focused purely on IOC, with no integration with, or dependency 
+  on other open source projects. The reference implementation to be 'hacked out' 
+  over a weekend due to time constraints.</p>
+<h3>The result</h3>
+<p>MicroSpring! And it's done, and tested, and released! Spring IOC without Spring. 
+  But also, a challenge to others to produce an even smaller and leaner implementation 
+  of IOC, which is ideally Spring compatible. This should be possible given more 
+  time, and if I find more, I may make MicroSpring smaller, leaner, and, err, 
+  meaner?</p>
+<p>So, if you want to play with IOC, remain compatible with Spring, and thats 
+  all, read on, and play with <a href="index.html">MicroSpring</a>.</p>
+</body>
+</html>

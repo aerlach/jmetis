@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Java Unified Expression Language
+Bundle-SymbolicName: javax.el
+Bundle-Version: 1.0.0
+Bundle-Vendor: MIC Datenverarbeitung GmbH
+Export-Package: javax.el
+Eclipse-BuddyPolicy: dependent

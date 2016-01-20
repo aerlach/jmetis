@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Template Plug-in
+Bundle-SymbolicName: org.jmetis.template.core;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Require-Bundle: org.eclipse.osgi;bundle-version="3.4.0",
+ org.eclipse.core.runtime;bundle-version="3.4.0",
+ org.jmetis.kernel;bundle-version="1.0.0",
+ javax.xml.stream;bundle-version="1.0.0",
+ javax.el;bundle-version="1.0.0";visibility:=reexport,
+ org.jmetis.resources;bundle-version="1.0.0"
+Export-Package: org.jmetis.template.compiler,
+ org.jmetis.template.context,
+ org.jmetis.template.handler,
+ org.jmetis.template.library,
+ org.jmetis.template.model

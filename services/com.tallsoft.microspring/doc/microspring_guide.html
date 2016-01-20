@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>MicroSpring user guide</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+<table width="100%" border="0" bgcolor="#66FF00">
+  <tr> 
+    <td width="5%"><a href="index.html"><img src="images/home.jpg" width="49" height="60" border="1" align="middle"></a></td>
+    <td width="95%"><p><font size="+2"><strong>MicroSpring</strong></font><br>
+        A Spring Framework (mainly) compatible IOC container by J.Gibbons, Feb 
+        2005<br>
+        <font size="-1"><a href="http://www.tallsoftware.com/microspring/">http://www.tallsoftware.com/microspring/</a></font> 
+      </p></td>
+  </tr>
+</table>
+<table width="100%" border="1" align="center" cellpadding="0" cellspacing="0" bgcolor="#66FF00">
+  <tr> 
+    <td><a href="index.html">Home</a></td>
+    <td> <div align="center"><a href="spring_ioc_1page_guide.html">Spring Framework<br>
+        1 page Guide (html)</a></div></td>
+    <td> <div align="center"><a href="Spring_1pager.pdf">Spring Framework<br>
+        1 page Guide (PDF)</a></div></td>
+    <td> <div align="center"><a href="microspring_guide.html">MicroSpring<br>
+        short user guide</a></div></td>
+    <td> <p align="center"><a href="download.html">Download <br>
+        MicroSpring</a> </p></td>
+    <td> <div align="center"><a href="spring_notes.html">Background notes<br>
+        which you can ignore</a></div></td>
+  </tr>
+</table>
+<h2>MicroSpring Guide</h2>
+<p>MicroSpring was written in a weekend, as a standalone IOC container which is 
+  compatible with the Spring Framework's XML config format.</p>
+<p>This means you can play with IOC, take the MicroSpring code and very easily 
+  change it - it's a tiny code base. It also means you can switch to the real 
+  Spring Framework with very little pain if you need to.</p>
+<h2>What do you need to read?</h2>
+<p>This html page, and the <a href="spring_ioc_1page_guide.html">one page guide</a>, 
+  and that's all. It would help if you understood <a href="what_is_ioc.html" target="ioc">Inversion 
+  Of Control</a> as well! </p>
+<h2>What does MicroSpring do?</h2>
+<p>It is tiny compared with Spring as a whole, and it doesn't even do all the 
+  IOC things, so what does it do?</p>
+<ul>
+  <li>It supports beans, properties, values as sets, maps, lists, properties, 
+    primitives and idref's to other beans.</li>
+  <li>It supports singletons and non singletons, and also lazy-load=&quot;true&quot;</li>
+  <li>It supports ApplicationListeners for close and reset events</li>
+  <li>It supports bean templating with the abstract and parent attributes.</li>
+  <li>It supports parent ApplicationContexts.</li>
+  <li>It supports the standard bean locator functions that any BeanFactory does.</li>
+  <li>It support init-method, destroy-method.</li>
+  <li>It supports application context aware.</li>
+  <li>Currently all lists, sets, maps and properties support either beans (i.e. 
+    other beans in the config), or strings as members. You cannot currently specify 
+    a list of Integer, or Double types.</li>
+</ul>
+<h3>Reset behaviour</h3>
+<p>Calling reset on the XmlBeanFactory will read the config file. Compare class 
+  names with new class names on all singletons, and if different, destroy the 
+  old singleton. It will then call all the property setters again on existing 
+  singletons, followed by the onApplicationEvent (if its an application listener). 
+  Finally it tells any child contexts to refresh. i.e. it doesn't call the init 
+  method again, so if you want common behavior on start up and on refresh do it 
+  yourself. The reset behaviour is the only concrete advantage of setter injection 
+  over constructor injection that I have seen (the big downside being the risk 
+  of null ptrs if your config is wrong).</p>
+<p>The is the behaviour I want in my IOC container, I haven't got a clue what 
+  the real spring framework does (because I've not had time to look yet).</p>
+<h2>What doesn't it do?</h2>
+<ul>
+  <li>Doesn't support bean alliases.</li>
+  <li>Doesn't do load time validation - you can get runtime failures. Obviously 
+    singletons by default are created at load time, so there is validation providing 
+    lazy-load is not true.</li>
+  <li>Doesn't support bean name lookup - you have to use &lt;ref bean=&quot;&quot;&gt; 
+    rather than value to locate other beans.</li>
+  <li>Doesn't support constructor injection.</li>
+</ul>
+<p>In fact the simplest thing to do is read the 1 page <a href="spring_ioc_1page_guide.html">Spring 
+  crib sheet</a>, MicroSpring does everything on this sheet !</p>
+<h2>What is incompatible?</h2>
+<p>The class paths for the interfaces are tallsoft rather than spring. And you 
+  should comment out the doctype line of the xml config file. Also reset in microspring 
+  is not ties to spring reset. See above. And that's that.</p>
+<p>The import's not matching are annoying, but this is simply solved by refactoring, 
+  or by renaming MicroSpring to be compatible. I do not presume to do this in 
+  my source code. After all MicroSpring is not endorsed, supported, or at this 
+  point even known about by the Spring Framework team.</p>
+<h2><a name="example"></a>An example</h2>
+<p>There are two things going on here:</p>
+<ul>
+  <li>the cityFinder singleton is being injected into the region object, and we 
+    are using maps and lists for this.</li>
+  <li>the templateGeography is a base definition with two 'derived' definitions, 
+    one of which overrides a property.</li>
+</ul>
+<h3>The XML</h3>
+<pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;<br>&lt;!-- !DOCTYPE beans PUBLIC &quot;-//SPRING//DTD BEAN//EN&quot; &quot;http://www.springframework.org/dtd/spring-beans.dtd&quot;--&gt;</pre>
+<pre>
+&lt;beans&gt;
+    &lt;!-- example of list and map and ref and property values --&gt;
+    &lt;bean id=&quot;<strong>cityFinder</strong>&quot; class=&quot;com.tallsoft.springeg.CityScape&quot;    singleton=&quot;true&quot;&gt; 
+        &lt;property name=&quot;cityMap&quot;&gt;
+            &lt;map&gt;
+                &lt;entry key=&quot;LDN&quot;&gt;&lt;value&gt;London&lt;/value&gt;&lt;/entry&gt;
+                &lt;entry key=&quot;FFT&quot;&gt;&lt;value&gt;Frankfurt&lt;/value&gt;&lt;/entry&gt;
+            &lt;/map&gt;
+        &lt;/property&gt;
+    &lt;/bean&gt;
+    &lt;!-- example of list and depends on for creation ordering--&gt;
+    &lt;bean id=&quot;<strong>region</strong>&quot; class=&quot;com.tallsoft.springeg.RegionInfo&quot;    depends-on=&quot;cityFinder&quot;&gt;
+        &lt;property name=&quot;cityFinder&quot;&gt;&lt;ref bean=&quot;<strong>cityFinder</strong>&quot;/&gt;&lt;/property&gt;
+        &lt;property name=&quot;regions&quot;&gt;
+            &lt;list&gt;
+                &lt;value&gt;Europe&lt;/value&gt;
+                &lt;value&gt;America&lt;/value&gt;
+            &lt;/list&gt;
+        &lt;/property&gt;
+    &lt;/bean&gt;
+    &lt;!-- example of template, and the init method --&gt;
+    &lt;bean id=&quot;<strong>templateGeography</strong>&quot; abstract=&quot;true&quot;
+            class=&quot;com.tallsoft.springeg.BaseGeography&quot;&gt;
+        &lt;property name=&quot;planetName&quot;&gt;&lt;value&gt;Earth&lt;/value&gt;&lt;/property&gt;
+        &lt;property name=&quot;system&quot;&gt;&lt;value&gt;sol&lt;/value&gt;&lt;/property&gt;
+    &lt;/bean&gt; 
+    &lt;bean id=&quot;earth&quot; class=&quot;com.tallsoft.springeg.PlanetInfo&quot;
+                    parent=&quot;<strong>templateGeography</strong>&quot; /&gt;
+    &lt;bean id=&quot;mars&quot; class=&quot;com.tallsoft.springeg.PlanetInfo&quot;    
+                    parent=&quot;<strong>templateGeography</strong>&quot; init-method=&quot;initialize&quot;&gt;
+        &lt;!-- overriding the value here --&gt;
+        &lt;property name=&quot;planetName&quot;&gt;&lt;value&gt;Mars&lt;/value&gt;&lt;/property&gt;
+    &lt;/bean&gt;
+&lt;/beans&gt;
+</pre>
+<h3>The Code</h3>
+<pre>try {
+	FileSystemXmlApplicationContext factory = new FileSystemXmlApplicationContext(&quot;example.xml&quot;);
+   RegionInfo r = (RegionInfo)factory.getBean(&quot;region&quot;);
+} catch (Exception ex) {
+	ex.printStackTrace(System.out);
+}</pre>
+</body>
+</html>

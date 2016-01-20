@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Conversion Plug-in
+Bundle-SymbolicName: org.jmetis.conversion;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.jmetis.conversion.internal.Activator
+Bundle-Vendor: jmetis.org
+Require-Bundle: org.eclipse.osgi;bundle-version="3.4.0",
+ org.jmetis.kernel;bundle-version="1.0.0"
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-ActivationPolicy: lazy
+Export-Package: org.jmetis.conversion

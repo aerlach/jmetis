@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Resource Plug-in
+Bundle-SymbolicName: org.jmetis.resources
+Bundle-Version: 1.0.0
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: org.jmetis.resource
+Require-Bundle: org.jmetis.collections;bundle-version="1.0.0",
+ org.jmetis.kernel;bundle-version="1.0.0",
+ org.eclipse.core.runtime;bundle-version="3.4.0"

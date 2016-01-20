@@ -1,0 +1,319 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Spring Framework IOC notes</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+<table width="100%" border="0" bgcolor="#66FF00">
+  <tr> 
+    <td width="5%"><a href="index.html"><img src="images/home.jpg" width="49" height="60" border="1" align="middle"></a></td>
+    <td width="95%"><p><font size="+2"><strong>MicroSpring</strong></font><br>
+        A Spring Framework (mainly) compatible IOC container by J.Gibbons, Feb 
+        2005<br>
+        <font size="-1"><a href="http://www.tallsoftware.com/microspring/">http://www.tallsoftware.com/microspring/</a></font> 
+      </p></td>
+  </tr>
+</table>
+<table width="100%" border="1" align="center" cellpadding="0" cellspacing="0" bgcolor="#66FF00">
+  <tr> 
+    <td><a href="index.html">Home</a></td>
+    <td> <div align="center"><a href="spring_ioc_1page_guide.html">Spring Framework<br>
+        1 page Guide (html)</a></div></td>
+    <td> <div align="center"><a href="Spring_1pager.pdf">Spring Framework<br>
+        1 page Guide (PDF)</a></div></td>
+    <td> <div align="center"><a href="microspring_guide.html">MicroSpring<br>
+        short user guide</a></div></td>
+    <td> <p align="center"><a href="download.html">Download <br>
+        MicroSpring</a> </p></td>
+    <td> <div align="center"><a href="spring_notes.html">Background notes<br>
+        which you can ignore</a></div></td>
+  </tr>
+</table>
+<h2>Spring Framework IOC notes</h2>
+<p>Before starting on MicroSpring it was important to gather notes on 'best practice' 
+  and 'minimum practice' for IOC in Spring. These notes are below, often directly 
+  cut and pasted from the Spring 1.1.3 help text. This works as a small guide 
+  on using the Spring Framework. It also formed the ground work for the Micro 
+  Spring implementation.</p>
+<p>Do not bother reading it, unless you are really bored. Instead look at the 
+  one page crib sheet.</p>
+<h2>Spring Crib Sheet Author: J.Gibbons 13/2/05<br>
+  (for the average user, on green field project)</h2>
+<p>All taken from the spring documentation at:<br>
+  &lt;install dir&gt;\spring-framework-1.1.3\docs\reference\html_single\index.html</p>
+<h2>Example</h2>
+<pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+   &lt;!DOCTYPE beans PUBLIC &quot;-//SPRING//DTD BEAN//EN&quot; &quot;http://www.springframework.org/dtd/spring-beans.dtd&quot;&gt;</pre>
+<pre>&lt;beans&gt;
+   &lt;bean id=&quot;exampleBean&quot; class=&quot;examples.ExampleBean&quot;&gt;
+   &lt;property name=&quot;beanOne&quot;&gt;&lt;ref bean=&quot;anotherExampleBean&quot;/&gt;&lt;/property&gt;
+   &lt;property name=&quot;beanTwo&quot;&gt;&lt;ref bean=&quot;yetAnotherBean&quot;/&gt;&lt;/property&gt;
+   &lt;property name=&quot;integerProperty&quot;&gt;&lt;value&gt;1&lt;/value&gt;&lt;/property&gt;
+   &lt;property name=&quot;url&quot;&gt;&lt;value&gt;http://foo/&lt;/value&gt;&lt;/property&gt;
+   &lt;/bean&gt;</pre>
+<pre> &lt;bean id=&quot;anotherExampleBean&quot; class=&quot;examples.AnotherBean&quot;/&gt;
+   &lt;bean id=&quot;yetAnotherBean&quot; class=&quot;examples.YetAnotherBean&quot;/&gt;</pre>
+<pre> &lt;bean id=&quot;exampleStaticFuncInit&quot; class=&quot;examples.ExampleStaticInit&quot;
+   factory-method=&quot;createInstance&quot;&gt;
+   &lt;constructor-arg&gt;&lt;ref bean=&quot;anotherExampleBean&quot;/&gt;&lt;/constructor-arg&gt;
+   &lt;constructor-arg&gt;&lt;ref bean=&quot;yetAnotherBean&quot;/&gt;&lt;/constructor-arg&gt;
+   &lt;constructor-arg&gt;&lt;value&gt;1&lt;/value&gt;&lt;/constructor-arg&gt;
+   &lt;/bean&gt;
+   &lt;/beans&gt;</pre>
+<pre>public class ExampleBean {
+   private AnotherBean beanOne;
+   private YetAnotherBean beanTwo;
+   private int i;
+   private String url;
+   public void setBeanOne(AnotherBean beanOne) {
+   this.beanOne = beanOne;
+   }
+   public void setBeanTwo(YetAnotherBean beanTwo) {
+   this.beanTwo = beanTwo;
+   } 
+   public void setIntegerProperty(int i) {
+   this.i = i;
+   } 
+   public void setUrl(String url) {
+   this.url = url;
+   } 
+   }</pre>
+<pre>public class ExampleStaticInit {
+   private ExampleStaticInit () {
+   }
+   
+   public static ExampleStaticInit createInstance(
+   AnotherBean anotherBean, YetAnotherBean yetAnotherBean, int i) {
+   ExampleBean eb = new ExampleBean();
+   return eb;
+   }
+}</pre>
+<h2>My Attitude, and how to choose the bits I want</h2>
+<p>IOC is OK, kinda works, but does create stupid chinese walls in your code. 
+  But, why not. Given that attitude, why not use spring as its this years fasion 
+  in Java Land (much like Jboss was 2 or 3 years ago). However, only a cut down, 
+  simple spring, and not the entire &#8220;run time, heavy framework, retrain 
+  all your staff&#8221;, environment. </p>
+<p>Or to put it another way, what I want from spring is IOC. If I want something 
+  for ORM or AOP or resource bundles or event propogation I will use something 
+  else small and light. I do not believe in making XML config files contain complex 
+  logic and config which is better placed in a database or java code.</p>
+<p>Transaction management &#8211; loads of java gurus recon that it is terribly 
+  hard and your average developer is an idiot so their framework will do it all 
+  for you through an xml(read deployment ascii) file. I disagree. When I write 
+  code and look at code I want the behaviour to be within the code, and to be 
+  explicit. So again, I discard springs transactional AOPtastic, embedded meta 
+  data approach. Likewise their jdbc implementation &#8211; it may have some good 
+  stuff in, but it is not the standard, and requires training. Database access 
+  is not hard, there is no need to protect folks from it.</p>
+<p>Web frameworks. I don&#8217;t believe in springs new kid on the block/encapsulate 
+  the world mantra. Web apps are no longer nearly as important as they were &#8211; 
+  Fit Clients are back. Lots of choices are out there, so choose one &#8211; JSF 
+  or Struts seem good and are still modern.</p>
+<p>In summary, spring encourages you to pick and choose from its services, and 
+  I have. IOC and that&#8217;s it.</p>
+<h2>Hints and tips &#8211; very short version:</h2>
+<ul>
+  <li>Avoid anything that ties your code to the spring framework.</li>
+  <li> Do use ApplicationListener to get refresh and close events for your singletons 
+    on close down (even though it is a spring interface).</li>
+  <li> Use setters and not constructors for injection.</li>
+  <li> For most users, beans in the container will be singletons.</li>
+  <li> If the bean is in the same xml config then use &lt;idref local=&quot;theTargetBean&quot;/&gt;</li>
+  <li> Use &lt;idref&gt;theBeanId&lt;/idref&gt; to refer to other beans, and not 
+    &lt;value&gt;theBeanId&lt;/value&gt;.</li>
+  <li> To force order of creation you can use the depends-on=&#8221;beanId&#8221; 
+  </li>
+  <li>If you need lifecycle then use the init-method and destroy-method attributes. 
+    Do not do this on singleton beans. &lt;bean id=&quot;egBean&quot; class=&quot;foo&quot; 
+    init-method=&quot;init&quot; destroy-method=&quot;cleanup&quot;/&gt;</li>
+  <li> Template beans avoid repitition; the abstract and parent attributes.</li>
+  <li> Use ApplicationContext as your bean factory</li>
+  <li> Do not use spring ApplicationListeners for broadcast of your own events 
+    &#8211; write your own mechanism and avoid being tied to spring. Event frameworks 
+    are very simple!</li>
+  <li> ApplicationContextAware interface has method setApplicationContext() which 
+    the app context calls, allows the use of app contexts (resources, events etc) 
+    &#8211; but it ties you to spring!</li>
+  <li> Data source beans are great, select your db pool implementation, define 
+    a datasource bean or set of them and inject it in.</li>
+  <li> changing the auto wiring mode is discouraged. i.e. the default works out 
+    dependencies, and creation ordering.</li>
+</ul>
+<h2>Your code</h2>
+<pre>   InputStream is = new FileInputStream(&quot;beans.xml&quot;);
+   XmlBeanFactory factory = new XmlBeanFactory(is);</pre>
+<h3>Factory methods:</h3>
+<pre>   boolean containsBean(String)
+   Object getBean(String) throws BeansException;
+   Object getBean(String,Class) throws BeansException;
+   boolean isSingleton(String) throws NoSuchBeanDefinitionException
+   Class getType(String name) throws NoSuchBeanDefinitionException; 
+   String[] getAliases(String) throws NoSuchBeanDefinitionException;</pre>
+<h2>Java Beans, default Constructor</h2>
+<p>Most people using Spring prefer to have actual JavaBeans (having just a default 
+  (no-argument) constructor and appropriate setters and getters modelled after 
+  the properties) in the BeanFactory</p>
+<p>setter-based dependency injection is realized by calling setters on your beans 
+  after invoking a no-argument constructor or no-argument static factory method 
+  to instantiate your bean. Beans defined in the BeanFactory that use setter-based 
+  dependency injection are true JavaBeans.</p>
+<p>most users of Spring will not be dealing with these classes directly (i.e. 
+  programmatically), but rather with an XML definition file which will be converted 
+  internally into instances of these classes, and used to load an entire BeanFactory 
+  or ApplicationContext.</p>
+<h2>Complex types</h2>
+<p>Null param value null = &lt;property name=&quot;email&quot;&gt;&lt;null/&gt;&lt;/property&gt;<br>
+  Empty string value &#8220;&#8221; = &lt;property name=&quot;email&quot;&gt;&lt;/property&gt;</p>
+<p>The list, set, map, and props elements allow properties and arguments of Java 
+  type List, Set, Map, and Properties, respectively, to be defined and set.<br>
+</p>
+<pre>&lt;property name=&quot;people&quot;&gt;
+   &lt;props&gt;
+	   &lt;prop key=&quot;HarryPotter&quot;&gt;The magic property&lt;/prop&gt;
+	   &lt;prop key=&quot;JerrySeinfeld&quot;&gt;The funny property&lt;/prop&gt;
+   &lt;/props&gt;
+&lt;/property&gt;
+&lt;!-- results in a setSomeList(java.util.List) call --&gt;
+&lt;property name=&quot;someList&quot;&gt;
+   &lt;list&gt;
+  		&lt;value&gt;a list element followed by a reference&lt;/value&gt;
+   	&lt;ref bean=&quot;myDataSource&quot;/&gt;
+   &lt;/list&gt;
+&lt;/property&gt;
+&lt;!-- results in a setSomeMap(java.util.Map) call --&gt;
+&lt;property name=&quot;someMap&quot;&gt;
+   &lt;map&gt;
+	   	&lt;entry key=&quot;yup an entry&quot;&gt;
+		   	&lt;value&gt;just some string&lt;/value&gt;
+	   	&lt;/entry&gt;
+   	&lt;entry key=&quot;yup a ref&quot;&gt;
+  		 	&lt;ref bean=&quot;myDataSource&quot;/&gt;
+   	&lt;/entry&gt;
+   &lt;/map&gt;
+&lt;/property&gt;
+&lt;!-- results in a setSomeSet(java.util.Set) call --&gt;
+&lt;property name=&quot;someSet&quot;&gt;
+   &lt;set&gt;
+	   &lt;value&gt;just some string&lt;/value&gt;
+	   &lt;ref bean=&quot;myDataSource&quot;/&gt;
+   &lt;/set&gt;
+&lt;/property&gt;</pre>
+<p><br>
+  Note that the value of a Map entry, or a set value, can also again be any of 
+  the elements:<br>
+  (bean | ref | idref | list | set | map | props | value | null)</p>
+<h2><br>
+  Ids or names in the config file</h2>
+<p>Every bean has one or more ids (also called identifiers, or names; these terms 
+  refer to the same thing). These ids must be unique within the BeanFactory or 
+  ApplicationContext the bean is hosted in.</p>
+<p>&#8230;you use the id or name attributes to specify the bean id(s), and at 
+  least one id must be specified in one or both of these attributes. The id attribute 
+  allows you to specify one id, and as it is marked in the XML DTD (definition 
+  document) as a real XML element ID attribute, the parser is able to do some 
+  extra validation when other elements point back to this one. As such, it is 
+  the preferred way to specify a bean id.</p>
+<p>An idref element is simply a shorthand and error-proof way to set a property 
+  to the String id or name of another bean in the container.<br>
+  Using the idref tag will allow Spring to validate at deployment time that the 
+  other bean actually exists.<br>
+  Additionally, if the bean being referred to is in the same actual XML file, 
+  and the bean name is the bean id, the local attribute may be used, which will 
+  allow the XML parser itself to validate the bean name even earlier, at XML document 
+  parse time.<br>
+  &lt;property name=&quot;targetName&quot;&gt;&lt;idref local=&quot;theTargetBean&quot;/&gt;&lt;/property&gt;</p>
+<h2><br>
+  Singleton or non singleton Attribute singleton=&quot;false&quot;</h2>
+<p>For most users, the majority of the beans in the container will be singletons.</p>
+<p>Beans are defined to be deployed in one of two modes: singleton or non-singleton.</p>
+<p>...This potentially delayed visibility of some configuration issues is why 
+  ApplicationContext by default pre-instantiates singleton beans. At the cost 
+  of some upfront time and memory to create these beans before they are actually 
+  needed, you find out about configuration issues when the ApplicationContext 
+  is created, not later. If you wish, you can still override this default behavior 
+  and set any of these singleton beans to lazy-load (not be pre-instantiated).</p>
+<p>The non-singleton, prototype mode of a bean deployment results in the creation 
+  of a new bean instance every time a request for that specific bean is done. 
+  This is ideal for situations where for example each user needs an independent 
+  user object or something similar.</p>
+<p>Beans are deployed in singleton mode by default, unless you specify otherwise. 
+  Keep in mind that by changing the type to non-singleton (prototype), each request 
+  for a bean will result in a newly created bean and this might not be what you 
+  actually want. So only change the mode to prototype when absolutely necessary.</p>
+<p>Note: when deploying a bean in the prototype mode, the lifecycle of the bean 
+  changes slightly. By definition, Spring cannot manage the complete lifecycle 
+  of a non-singleton/prototype bean, since after it is created, it is given to 
+  the client and the container does not keep track of it at all any longer.</p>
+<p>Dependencies<br>
+  1.The BeanFactory is created and initialized with a configuration which describes 
+  all the beans.<br>
+  2. Each bean has dependencies expressed in the form of properties, &#8230;. 
+  These dependencies will be provided to the bean, when the bean is actually created.<br>
+  3. Each property or constructor-arg is either an actual definition of the value 
+  to set, or a reference to another bean in the BeanFactory.<br>
+  4. Each property or constructor argument which is a value must be able to be 
+  converted from whatever format it was specified in, to the actual type of that 
+  property or constructor argument. (compex description in main docn, describes 
+  all the lovely varients).<br>
+  5. Bean configs are validated by spring, but only instatiated at creation time.<br>
+  6. Spring will resolve dependancies (create beans) as late as possible. Can 
+  lead to runtime exceptions if your beans are bad.</p>
+<p>To make sure that there is a certain order of creation you can use the depends-on 
+  attribute. <br>
+  &lt;bean id=&quot;beanOne&quot; class=&quot;ExampleBean&quot; depends-on=&quot;manager&quot;&gt;<br>
+  &lt;property name=&quot;manager&quot;&gt;&lt;ref local=&quot;manager&quot;/&gt;&lt;/property&gt;<br>
+  &lt;/bean&gt;</p>
+<p>&lt;bean id=&quot;manager&quot; class=&quot;ManagerBean&quot;/&gt;</p>
+<h2><br>
+  Abstract and child beans - a form of templating</h2>
+<p>Notes: beans with no class defn are parent beans by default, the abstract keywork 
+  means you are also specifying the base class impl. i.e. if no class name then 
+  not a problem, spring just treats the beans as a template.</p>
+<p>A bean definition potentially contains a large amount of configuration information, 
+  including container specific information (i.e. initialization method, static 
+  factory method name, etc.) and constructor arguments and property values. A 
+  child bean definition is a bean definition which inherits configuration data 
+  from a parent definition. It is then able to override some values, or add others, 
+  as needed. Using parent and child bean definitions can potentially save a lot 
+  of typing.<br>
+  &lt;bean id=&quot;inheritedTestBean&quot; abstract=&quot;true&quot;<br>
+  class=&quot;org.springframework.beans.TestBean&quot;&gt;<br>
+  &lt;property name=&quot;name&quot;&gt;&lt;value&gt;parent&lt;/value&gt;&lt;/property&gt;<br>
+  &lt;property name=&quot;age&quot;&gt;&lt;value&gt;1&lt;/value&gt;&lt;/property&gt;<br>
+  &lt;/bean&gt;</p>
+<p>&lt;bean id=&quot;inheritsWithDifferentClass&quot; class=&quot;org.springframework.beans.DerivedTestBean&quot;<br>
+  parent=&quot;inheritedTestBean&quot; init-method=&quot;initialize&quot;&gt;<br>
+  &lt;property name=&quot;name&quot;&gt;&lt;value&gt;override&lt;/value&gt;&lt;/property&gt;<br>
+  &lt;!-- age should inherit value of 1 from parent --&gt;<br>
+  &lt;/bean&gt;<br>
+  A child bean definition will use the bean class from the parent definition if 
+  none is specified, but can also override it. In the latter case, the child bean 
+  class must be compatible with the parent, i.e. it must accept the parent's property 
+  values.</p>
+<p>Important Note: Application contexts (but not simple bean factories) will by 
+  default pre-instantiate all singletons. Therefore it is important (at least 
+  for singleton beans) that if you have a (parent) bean definition which you intend 
+  to use only as a template, and this definition specifies a class, you must make 
+  sure to set the abstract attribute to true, otherwise the application context 
+  will actually pre-instantiate it.</p>
+<h2>Application Context Events</h2>
+<p>Provided through the ApplicationEvent class and ApplicationListener interface. 
+  When deployed to an application context the bean will be notified of events 
+  - the standard Observer design pattern. Spring provides three standard events: 
+</p>
+<ul>
+  <li>ContextRefreshedEvent &#8211; event generated on start up.</li>
+  <li>ContextClosedEvent &#8211; event when application context is closed</li>
+  <li>RequestHandledEvent &#8211; for web events, spring specific.</li>
+  <li>Custom Events - Simply call the publishEvent() method on the ApplicationContext, 
+    specifying a parameter which is an instance of your custom event class implementing 
+    ApplicationEvent. BUT DO NOT USE THEM &#8211; ties you to spring. And event 
+    broadcasting is way too simple to do yourself, so why tie yourself to spring.</li>
+</ul>
+<p><br>
+</p>
+</body>
+</html>

@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Reflection Plug-in
+Bundle-SymbolicName: org.jmetis.reflection;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: org.jmetis.reflection,
+ org.jmetis.reflection.internal;x-friends:="org.jmetis.test",
+ org.jmetis.reflection.metadata,
+ org.jmetis.reflection.method,
+ org.jmetis.reflection.property
+Bundle-Activator: org.jmetis.reflection.internal.Activator
+Bundle-Localization: Localization
+Bundle-Vendor: jmetis.org
+Import-Package: org.osgi.framework;version="1.4.0"
+Require-Bundle: org.jmetis.services.core;bundle-version="1.0.0",
+ org.jmetis.kernel;bundle-version="1.0.0";visibility:=reexport
+Bundle-ActivationPolicy: lazy

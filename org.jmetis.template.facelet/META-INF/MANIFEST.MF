@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Facelets Fragment
+Bundle-SymbolicName: org.jmetis.template.facelet
+Bundle-Version: 1.0.0
+Bundle-Vendor: www.jmetis.org
+Fragment-Host: org.jmetis.template.core;bundle-version="1.0.0"
+Bundle-RequiredExecutionEnvironment: J2SE-1.5

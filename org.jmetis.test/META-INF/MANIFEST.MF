@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: JUnit Test Plug-in
+Bundle-SymbolicName: org.jmetis.test
+Bundle-Version: 1.0.0
+Bundle-Vendor: jmetis.org
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Require-Bundle: org.jmetis.reflection;bundle-version="1.0.0",
+ org.jmetis.services.core;bundle-version="1.0.0",
+ org.jmetis.observable;bundle-version="1.0.0",
+ org.jmetis.binding;bundle-version="1.0.0",
+ org.jmetis.template.core;bundle-version="1.0.0",
+ org.junit4;bundle-version="4.3.1",
+ org.eclipse.osgi;bundle-version="3.4.0",
+ org.eclipse.osgi.services;bundle-version="3.1.200",
+ org.eclipse.osgi.util;bundle-version="3.1.300",
+ org.eclipse.core.runtime;bundle-version="3.4.0",
+ org.jmetis.resources;bundle-version="1.0.0"
